@@ -1,6 +1,7 @@
 package com.example.poidetection.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.poidetection.entity.User;
@@ -13,10 +14,16 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @PostMapping("/add")
     public String addUser(@RequestBody User user) {
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-        return "User added successfully";
+
+        return "User registered successfully";
     }
 
     // NEW: Enable tracking (CONSENT)
