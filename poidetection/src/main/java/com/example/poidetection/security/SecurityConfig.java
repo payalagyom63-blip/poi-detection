@@ -44,7 +44,7 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/user/add",
                                 "/user/enable-tracking/**",
-                                "/location/**",   // ✅ ADD THIS
+                                "/location/**",
                                 "/ws/**",
                                 "/index.html",
                                 "/**/*.js",
@@ -53,7 +53,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
 
-                .httpBasic(httpBasic -> {}); // ✅ FIXED
+                .httpBasic(httpBasic -> {});
 
         return http.build();
     }
