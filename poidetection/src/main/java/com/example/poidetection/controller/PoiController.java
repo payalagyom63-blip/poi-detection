@@ -35,7 +35,7 @@ public class PoiController {
             messagingTemplate.convertAndSend("/topic/poi", message);
 
             // show in IntelliJ console
-            System.out.println("🔔" + message);
+            System.out.println("🔔🔔" + message);
 
             return "User entered POI: " + poi.get().getName();
         }
